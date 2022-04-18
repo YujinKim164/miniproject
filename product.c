@@ -117,6 +117,14 @@ void searchProduct(Product *p, int count){
 			readProduct(p[i]);
 			scnt++;
 		}
+		else if (strstr(p[i].description, search)){
+			readProduct(p[i]);
+			scnt++;
+		}
+		else if (strstr(p[i].weight, search)){
+			readProduct(p[i]);
+			scnt++;
+		}
 	}
 	if (scnt == 0) printf("=> 검색된 데이터 없음!");
 	printf("\n");
