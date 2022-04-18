@@ -33,15 +33,15 @@ int createProduct(Product *p){
 }
 
 void readProduct(Product p){
-	printf("%s  %s  %s    %d  %d  ", p.name, p.description, p.weight, p.price, p.type);
+	printf("%-s %-s %-s %-d %-d ", p.name, p.description, p.weight, p.price, p.type);
 }
 
 void listProduct(Product *p, int count){
-	printf("제품명   설명     중량 가격  배송방법\n");
+	printf("제품명     설명 중량   가격   배송방법\n");
 	printf("=====================================\n");
 	for(int i = 0; i < count; i++){
 		if(p[i].price == -1) continue;
-		printf("%2d ", i+1);
+		printf("%d ", i+1);
 		readProduct(p[i]);
 		printf("\n");
 	}
@@ -81,7 +81,7 @@ void saveData(Product *p, int count){
 	fp = fopen("product.txt", "wt");
 	for (int i = 0; i <count; i++){
 		if (p[i].price == -1) continue;
-		fprintf(fp, "%s  %s  %s    %d  %d  ", p[i].name, p[i].description, p[i].weight, p[i].price, p[i].type);
+		fprintf(fp, "%-s %-s %-s %-d %-d ", p[i].name, p[i].description, p[i].weight, p[i].price, p[i].type);
 	}
 	fclose(fp);
 	printf("=> 저장됨!\n");
@@ -109,12 +109,11 @@ void searchProduct(Product *p, int count){
 	printf("검색할 이름? ");
 	scanf("%s", search);
 
-	printf("제품명  설명    중량  가격  배송방법\n");
+	printf("제품명     설명 중량   가격   배송방법\n");
 	printf("====================================\n");
 	for (int i = 0; i < count; i ++){
 		if (p[i].price == -1) continue;
 		if (strstr(p[i].name, search)){
-			printf("%2d ", i+1);
 			readProduct(p[i]);
 			scnt++;
 		}
